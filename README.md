@@ -1,47 +1,136 @@
-# websocket
+# 💬 Ktor Chat Backend
 
-This project was created using the [Ktor Project Generator](https://start.ktor.io).
+A real-time chat backend built with **Ktor** (HTTP + WebSockets), using **PostgreSQL**, **Exposed ORM**, and **HikariCP**. Features include user signup/login, presence tracking, messaging with delivery and seen statuses.
 
-Here are some useful links to get you started:
+---
 
-- [Ktor Documentation](https://ktor.io/docs/home.html)
-- [Ktor GitHub page](https://github.com/ktorio/ktor)
-- The [Ktor Slack chat](https://app.slack.com/client/T09229ZC6/C0A974TJ9). You'll need to [request an invite](https://surveys.jetbrains.com/s3/kotlin-slack-sign-up) to join.
+## 🚀 Features
 
-## Features
+- 🔐 User signup and login  
+- 🟢 Real-time status (online/offline) updates  
+- 💬 Live messaging via WebSockets  
+- ✅ Delivery & seen message states  
+- 🗃️ PostgreSQL storage with Exposed ORM  
+- 🛡️ Connection pooling with HikariCP  
+- 📦 JSON serialization via kotlinx  
 
-Here's a list of features included in this project:
+---
 
-| Name                                                                   | Description                                                                        |
-| ------------------------------------------------------------------------|------------------------------------------------------------------------------------ |
-| [Authentication](https://start.ktor.io/p/auth)                         | Provides extension point for handling the Authorization header                     |
-| [Routing](https://start.ktor.io/p/routing)                             | Provides a structured routing DSL                                                  |
-| [Authentication JWT](https://start.ktor.io/p/auth-jwt)                 | Handles JSON Web Token (JWT) bearer authentication scheme                          |
-| [Authentication Basic](https://start.ktor.io/p/auth-basic)             | Handles 'Basic' username / password authentication scheme                          |
-| [CORS](https://start.ktor.io/p/cors)                                   | Enables Cross-Origin Resource Sharing (CORS)                                       |
-| [Call Logging](https://start.ktor.io/p/call-logging)                   | Logs client requests                                                               |
-| [Content Negotiation](https://start.ktor.io/p/content-negotiation)     | Provides automatic content conversion according to Content-Type and Accept headers |
-| [kotlinx.serialization](https://start.ktor.io/p/kotlinx-serialization) | Handles JSON serialization using kotlinx.serialization library                     |
-| [WebSockets](https://start.ktor.io/p/ktor-websockets)                  | Adds WebSocket protocol support for bidirectional client connections               |
+## 🛠️ Tech Stack
 
-## Building & Running
+- Kotlin + Ktor  
+- Ktor WebSockets  
+- PostgreSQL  
+- Exposed ORM  
+- HikariCP  
+- kotlinx.serialization  
 
-To build or run the project, use one of the following tasks:
+---
 
-| Task                          | Description                                                          |
-| -------------------------------|---------------------------------------------------------------------- |
-| `./gradlew test`              | Run the tests                                                        |
-| `./gradlew build`             | Build everything                                                     |
-| `buildFatJar`                 | Build an executable JAR of the server with all dependencies included |
-| `buildImage`                  | Build the docker image to use with the fat JAR                       |
-| `publishImageToLocalRegistry` | Publish the docker image locally                                     |
-| `run`                         | Run the server                                                       |
-| `runDocker`                   | Run using the local docker image                                     |
-
-If the server starts successfully, you'll see the following output:
+## 📁 Project Layout
 
 ```
-2024-12-04 14:32:45.584 [main] INFO  Application - Application started in 0.303 seconds.
-2024-12-04 14:32:45.682 [main] INFO  Application - Responding at http://0.0.0.0:8080
+├── com.example.config     # Configuration (DB, WebSockets, Serialization)
+├── dao                    # Data access objects (UserDao, MessageDao)
+├── models                 # Request and response models
+├── routes                 # REST and WebSocket route definitions
+├── tables                 # Exposed table schemas
+├── Application.kt         # App entry point
+├── build.gradle.kts       # Build configuration
+└── README.md              # Project documentation
 ```
 
+---
+
+## ⚙️ Setup Guide
+
+### 🧑‍💻 Clone or Download
+
+```bash
+git clone https://github.com/your-username/ktor-chat-backend.git
+cd ktor-chat-backend
+```
+
+Or download:
+
+👉 [Download as ZIP](https://github.com/your-username/ktor-chat-backend/archive/refs/heads/main.zip)
+
+*(After hosting on GitHub, update the above link accordingly.)*
+
+---
+
+### 🐘 Database Setup
+
+1. Create a PostgreSQL database named `ktor_chat`.
+2. Update credentials in `configureDatabase()` if needed (default user/password are included).
+
+---
+
+### ▶️ Run the Server
+
+```bash
+./gradlew run
+```
+
+Server starts at:  
+`http://localhost:8080`
+
+---
+
+## 🔌 Important Endpoints
+
+- **HTTP**
+  - `POST /signup` – Register user  
+  - `POST /login` – Authenticate user  
+  - `POST /user/status` – Update presence  
+  - `POST /message/send` – Send a message  
+  - `POST /message/seen` – Mark as seen  
+  - `GET /messages/{sender}/{receiver}` – Fetch message history  
+  - `GET /user/status/{userId}` – Check online status  
+  - `GET /json/kotlinx-serialization` – Test JSON serialization
+
+- **WebSocket**
+  - Connect via `/ws/{userId}` for real-time messaging and pending delivery
+
+---
+
+## 👥 Download Links
+
+- 👉 **Download ZIP**:  
+  https://github.com/your-username/ktor-chat-backend/archive/refs/heads/main.zip  
+
+- Or clone with:  
+  ```bash
+  git clone https://github.com/your-username/ktor-chat-backend.git
+  ```
+
+*(Be sure to update the above with your actual repo URL once available.)*
+
+---
+
+## 🧪 Testing / Validation
+
+After running the server:
+
+1. Use WebSocket tools (e.g., [PieSocket WebSocket Tester])  
+2. Or test endpoints via Postman / curl
+
+---
+
+## ✅ What’s Next?
+
+- ✅ Upload to GitHub and replace the download link  
+- 🔄 (Optional) Add a Postman collection  
+- 🌐 Deploy to a cloud platform like Heroku or Railway  
+
+---
+
+## 🙂 Author
+
+**Khubaib**
+
+---
+
+## 📜 License
+
+MIT License – free to use, modify, and share.
