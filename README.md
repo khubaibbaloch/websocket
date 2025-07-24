@@ -53,7 +53,7 @@ cd ktor-chat-backend
 
 Or download:
 
-👉 [Download as ZIP](https://github.com/your-username/ktor-chat-backend/archive/refs/heads/main.zip)
+👉 [Download as ZIP] (https://github.com/khubaibbaloch/websocket/archive/refs/heads/main.zip )
 
 *(After hosting on GitHub, update the above link accordingly.)*
 
