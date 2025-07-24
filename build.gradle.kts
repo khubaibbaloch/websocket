@@ -30,4 +30,24 @@ dependencies {
     implementation(libs.ktor.server.config.yaml)
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
+
+
+    // Exposed core components
+    implementation("org.jetbrains.exposed:exposed-core:0.45.0")
+    implementation("org.jetbrains.exposed:exposed-dao:0.45.0")
+    implementation("org.jetbrains.exposed:exposed-jdbc:0.45.0")
+
+    // H2 database driver
+    implementation("com.h2database:h2:2.2.224")
+
+    // HikariCP for connection pooling
+    implementation("com.zaxxer:HikariCP:5.1.0")
+
+    // For PostgreSQL
+    implementation("org.postgresql:postgresql:42.7.2")
+
+    // Serialization
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.7")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
 }
